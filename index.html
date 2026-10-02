@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portafolio de Orlando, estudiante de Informática en la UPTAEB, Barquisimeto">
+<title>Orlando | Portafolio</title>
+
+<style>
+/* Colores del sitio: cambia aquí y cambia en toda la página */
+:root{--bg:#0b0c1a;--card:#151832;--line:#2a2f61;--tx:#eceeff;--soft:#a7abd6;--blue:#5b8cff;--pur:#a56bff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{margin:0;font-family:"Segoe UI",system-ui,Roboto,Arial,sans-serif;background:var(--bg);color:var(--tx);line-height:1.65}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--pur);outline-offset:2px}
+.w{width:min(100% - 2rem,62rem);margin-inline:auto;position:relative;z-index:1}
+
+/* Header y menú */
+header{position:sticky;top:0;z-index:10;background:rgba(11,12,26,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .w{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.3rem 1.2rem;padding-block:.7rem}
+.logo{font-weight:800;font-size:1.2rem;text-decoration:none;color:var(--tx)}
+.logo b{color:var(--blue)}
+nav ul{display:flex;flex-wrap:wrap;gap:.2rem .3rem;list-style:none;margin:0;padding:0}
+nav a{display:block;padding:.35rem .8rem;border-radius:999px;color:var(--soft);text-decoration:none;font-size:.92rem}
+nav a:hover{background:var(--card);color:var(--tx)}
+
+/* Portada */
+.hero{position:relative;overflow:hidden;padding:4.5rem 0 4rem;background:radial-gradient(circle at 85% 0,rgba(165,107,255,.28),transparent 55%),radial-gradient(circle at 0 100%,rgba(91,140,255,.2),transparent 50%)}
+.hero .w{display:grid;grid-template-columns:1.5fr 1fr;gap:2.5rem;align-items:center}
+.etiqueta{display:inline-block;padding:.25rem .9rem;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--soft);font-size:.85rem}
+.hero h1{font-size:clamp(2.4rem,8vw,4.2rem);line-height:1.08;margin:.8rem 0;letter-spacing:-.03em}
+.hero h1 span{background:linear-gradient(90deg,var(--blue),var(--pur));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--soft);font-size:1.08rem;max-width:34rem}
+.foto{position:relative;width:min(100%,16rem);aspect-ratio:1;margin:0 auto;border-radius:50%;overflow:hidden;border:4px solid var(--line);box-shadow:0 0 70px rgba(165,107,255,.4);background:linear-gradient(135deg,var(--blue),var(--pur));display:grid;place-items:center;font-size:5rem;font-weight:800}
+.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;font-size:0;color:transparent}
+@media(max-width:720px){.hero .w{grid-template-columns:1fr}.foto{order:-1;width:11rem;font-size:4rem}}
+
+.btn{display:inline-block;margin:.5rem .5rem 0 0;padding:.7rem 1.4rem;border-radius:999px;border:0;font:inherit;font-weight:600;text-decoration:none;color:#fff;background:linear-gradient(90deg,var(--blue),var(--pur));cursor:pointer}
+.btn.borde{background:transparent;border:1px solid var(--line);color:var(--tx)}
+.btn:hover{filter:brightness(1.15)}
+
+/* Secciones */
+section.seccion{position:relative;overflow:hidden;padding:4rem 0;border-top:1px solid var(--line)}
+.titulo{margin:0 0 .3rem;font-size:2rem}
+.sub{margin:0 0 2rem;color:var(--soft);max-width:40rem}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.2rem}
+.tarjeta{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.4rem;transition:transform .2s,border-color .2s}
+.tarjeta:hover{transform:translateY(-4px);border-color:var(--pur)}
+.tarjeta h3{margin:.8rem 0 .3rem}
+.tarjeta p{margin:0;color:var(--soft)}
+.tarjeta img.icono{width:56px;height:56px}
+.proyecto{padding:0;overflow:hidden}
+.proyecto img{display:block;width:100%;height:auto}
+.proyecto div{padding:1.2rem}
+.proyecto h3{margin-top:0}
+
+/* Sobre mí */
+.dos{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem}
+@media(max-width:720px){.dos{grid-template-columns:1fr}}
+.datos{list-style:none;margin:0;padding:0}
+.datos li{display:flex;align-items:center;gap:.9rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.datos li:last-child{border:0}
+.datos img{width:40px;height:40px;flex:none}
+.datos small{display:block;color:var(--soft)}
+
+/* Formulario */
+form{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.4rem}
+label{display:block;margin-top:.9rem;font-weight:600}
+label:first-of-type{margin-top:0}
+input,textarea{width:100%;margin-top:.3rem;padding:.65rem .8rem;font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--line);border-radius:10px}
+
+/* Stickers decorativos: van detrás del contenido y no se pueden tocar */
+.sticker{position:absolute;z-index:0;pointer-events:none;height:auto}
+.tile{border-radius:18px;border:3px solid #fff;box-shadow:0 12px 32px rgba(0,0,0,.55),0 0 40px rgba(165,107,255,.25)}
+.recorte{filter:drop-shadow(0 0 10px rgba(255,255,255,.28)) drop-shadow(0 10px 18px rgba(0,0,0,.5))}
+.s-hero{top:3rem;right:4%;width:150px;transform:rotate(8deg)}
+.s-sobre{top:1.4rem;right:3%;width:140px;transform:rotate(-7deg)}
+.s-serv{top:1.2rem;right:4%;width:150px;transform:rotate(5deg)}
+.s-port{top:1.2rem;right:3%;width:125px;transform:rotate(-6deg)}
+.s-cont{top:1rem;right:5%;width:130px;transform:rotate(8deg)}
+@media(max-width:720px){.s-hero{top:6rem;right:6%;width:105px}.s-sobre,.s-port{width:92px;top:.8rem}.s-serv,.s-cont{width:100px;top:.8rem}}
+.subtitulo{margin:3rem 0 1.2rem;font-size:1.4rem}
+
+footer{border-top:1px solid var(--line);padding:2rem 0;text-align:center;color:var(--soft);font-size:.9rem}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER: contiene el logo y el menú. Cada enlace lleva al id de una sección -->
+<header>
+<div class="w">
+<a class="logo" href="#inicio">Orlando<b>.</b></a>
+<nav aria-label="Menú principal">
+<ul>
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#sobre-mi">Sobre mí</a></li>
+<li><a href="#servicios">Servicios</a></li>
+<li><a href="#portafolio">Portafolio</a></li>
+<li><a href="#contacto">Contáctame</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main>
+
+<!-- INICIO: título, descripción y foto -->
+<section class="hero" id="inicio" aria-labelledby="titulo-principal">
+<img class="sticker tile s-hero" src="img/sticker-anime1.jpg" alt="Sticker decorativo: personaje de anime en blanco y negro" width="150" height="150">
+<div class="w">
+<div>
+<span class="etiqueta">Estudiante de Informática · UPTAEB</span>
+<h1 id="titulo-principal">Hola, soy <span>Orlando</span></h1>
+<p>Estudio Informática en Barquisimeto y estoy aprendiendo a crear páginas web con HTML y CSS. Me gusta trabajar en equipo, aprender cosas nuevas y convertir ideas en sitios web claros y ordenados.</p>
+<a class="btn" href="#portafolio">Ver mis proyectos</a>
+<a class="btn borde" href="#contacto">Contáctame</a>
+</div>
+<!-- Tu imagen de perfil está en la carpeta img (foto.jpg). Si no carga, se ve la letra O -->
+<figure class="foto" style="margin:0">
+<span>O</span>
+<img src="img/foto.jpg" alt="Avatar de Orlando: caricatura con lentes y cabello negro" width="256" height="256" onerror="this.remove()">
+</figure>
+</div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="seccion" id="sobre-mi" aria-labelledby="t-sobre">
+<img class="sticker tile s-sobre" src="img/sticker-anime2.jpg" alt="Sticker decorativo: personaje de manga en blanco y negro" width="140" height="140" loading="lazy">
+<div class="w">
+<h2 class="titulo" id="t-sobre">Sobre mí</h2>
+<p class="sub">Un poco de quién soy y qué estoy aprendiendo.</p>
+<div class="dos">
+<article>
+<p>Soy estudiante del Programa Nacional de Formación en Informática (PNFI) en la Universidad Politécnica Territorial Andrés Eloy Blanco (UPTAEB). Durante la carrera trabajo en proyectos en equipo con mis compañeros, donde practico lo que aprendo en clase.</p>
+<p>Ahora mismo estoy aprendiendo HTML: títulos, listas, tablas, formularios y etiquetas semánticas. Mi meta es construir sitios web que se vean bien y que cualquier persona pueda usar con facilidad.</p>
+<p>Fuera de la pantalla, soy un deportista nato: me gustan el fútbol y la natación, y voy seguido al gimnasio, que me gusta mucho. Soy una persona constante y responsable con lo que amo.</p>
+</article>
+<aside>
+<ul class="datos">
+<li><img src="img/icono-escuela.svg" alt=""><div><small>Universidad</small>UPTAEB</div></li>
+<li><img src="img/icono-codigo.svg" alt=""><div><small>Programa</small>PNFI, Sección 1203</div></li>
+<li><img src="img/icono-ubicacion.svg" alt=""><div><small>Ciudad</small>Barquisimeto, Lara</div></li>
+</ul>
+</aside>
+</div>
+
+<!-- Mis deportes: tres tarjetas con icono -->
+<h3 class="subtitulo">Mi lado deportista</h3>
+<div class="rejilla">
+<article class="tarjeta"><img class="icono" src="img/icono-futbol.svg" alt=""><h3>Fútbol</h3><p>Un deporte que disfruto mucho.</p></article>
+<article class="tarjeta"><img class="icono" src="img/icono-natacion.svg" alt=""><h3>Natación</h3><p>Me gusta nadar y mantenerme activo.</p></article>
+<article class="tarjeta"><img class="icono" src="img/icono-gimnasio.svg" alt=""><h3>Gimnasio</h3><p>Voy seguido y me gusta mucho entrenar.</p></article>
+</div>
+</div>
+</section>
+
+<!-- SERVICIOS: tres tarjetas con icono -->
+<section class="seccion" id="servicios" aria-labelledby="t-serv">
+<img class="sticker recorte s-serv" src="img/sticker-cerebro.png" alt="Sticker decorativo de un cerebro" width="150" height="133" loading="lazy">
+<div class="w">
+<h2 class="titulo" id="t-serv">Servicios</h2>
+<p class="sub">Lo que puedo hacer con lo que he aprendido hasta ahora.</p>
+<div class="rejilla">
+<article class="tarjeta">
+<img class="icono" src="img/icono-codigo.svg" alt="">
+<h3>Páginas web informativas</h3>
+<p>Sitios sencillos y ordenados con HTML y CSS para presentar un negocio, un proyecto o una persona.</p>
+</article>
+<article class="tarjeta">
+<img class="icono" src="img/icono-tabla.svg" alt="">
+<h3>Tablas y formularios</h3>
+<p>Tablas claras para mostrar datos y formularios con validación para recibir mensajes y registros.</p>
+</article>
+<article class="tarjeta">
+<img class="icono" src="img/icono-movil.svg" alt="">
+<h3>Diseño adaptable</h3>
+<p>Páginas que se ven bien en el celular, en la tablet y en la computadora.</p>
+</article>
+</div>
+</div>
+</section>
+
+<!-- PORTAFOLIO: tres proyectos con imagen -->
+<section class="seccion" id="portafolio" aria-labelledby="t-port">
+<img class="sticker tile s-port" src="img/sticker-gato.jpg" alt="Sticker decorativo: gato en blanco y negro" width="125" height="127" loading="lazy">
+<div class="w">
+<h2 class="titulo" id="t-port">Portafolio</h2>
+<p class="sub">Algunos de los trabajos que he realizado durante mis estudios.</p>
+<div class="rejilla">
+<article class="tarjeta proyecto">
+<img src="img/proyecto-restaurante.svg" alt="Ilustración de una página web para un restaurante" width="480" height="300" loading="lazy">
+<div><h3>Portal para restaurante</h3><p>Proyecto en equipo: portal web informativo para un restaurante local.</p></div>
+</article>
+<article class="tarjeta proyecto">
+<img src="img/proyecto-catalogo.svg" alt="Ilustración de una tabla de datos" width="480" height="300" loading="lazy">
+<div><h3>Catálogo de HTML</h3><p>Mi práctica de clase: títulos, listas, tablas, imágenes y etiquetas semánticas.</p></div>
+</article>
+<article class="tarjeta proyecto">
+<img src="img/proyecto-formulario.svg" alt="Ilustración de un formulario de contacto" width="480" height="300" loading="lazy">
+<div><h3>Formularios en HTML5</h3><p>Formularios con campos de distintos tipos y validación nativa.</p></div>
+</article>
+</div>
+</div>
+</section>
+
+<!-- CONTÁCTAME: datos y formulario -->
+<section class="seccion" id="contacto" aria-labelledby="t-cont">
+<img class="sticker recorte s-cont" src="img/sticker-burbujas.png" alt="Sticker decorativo de globos de conversación" width="130" height="122" loading="lazy">
+<div class="w">
+<h2 class="titulo" id="t-cont">Contáctame</h2>
+<p class="sub">¿Tienes una idea o quieres saludarme? Escríbeme.</p>
+<div class="dos">
+<ul class="datos">
+<!-- Cambia este correo por el tuyo -->
+<li><img src="img/icono-correo.svg" alt=""><div><small>Correo</small>tucorreo@ejemplo.com</div></li>
+<li><img src="img/icono-ubicacion.svg" alt=""><div><small>Ubicación</small>Barquisimeto, estado Lara</div></li>
+<li><img src="img/icono-escuela.svg" alt=""><div><small>Estudios</small>UPTAEB · PNFI, Sección 1203</div></li>
+</ul>
+<form action="#contacto" method="get">
+<label for="nombre">Nombre</label>
+<input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+<label for="correo">Correo</label>
+<input type="email" id="correo" name="correo" placeholder="nombre@correo.com" required>
+<label for="mensaje">Mensaje</label>
+<textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+<button class="btn" type="submit">Enviar mensaje</button>
+</form>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="w">
+<p>© 2026 Orlando · UPTAEB, Barquisimeto · PNFI, Sección 1203</p>
+<p><a href="#inicio">Volver arriba</a></p>
+</div>
+</footer>
+
+</body>
+</html>
